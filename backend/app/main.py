@@ -33,6 +33,7 @@ app.include_router(router, prefix="/api")
 
 @app.on_event("startup")
 async def startup():
+    import asyncio
     logger.info("Starting API...")
     for attempt in range(15):
         try:
@@ -50,21 +51,28 @@ async def startup():
     create_tables()
     logger.info("Tables created!")
 
+    # Seed in background so server starts immediately
+    asyncio.create_task(seed_in_background())
+
+
+async def seed_in_background():
+    """Run seeding after server is already up"""
+    import asyncio
+    await asyncio.sleep(2)  # Wait 2 seconds for server to fully start
     from app.database.db import SessionLocal
     from app.models.models import Category
     db = SessionLocal()
     try:
         count = db.query(Category).count()
-        if True:
-            logger.info("Seeding database...")
+        if True:  # Force reseed
+            logger.info("Seeding database in background...")
             from app.data.seed import seed_all
             seed_all(db)
             logger.info("Database seeded!")
         else:
-            logger.info(f"Database already seeded with {count} categories")
+            logger.info(f"Already seeded with {count} categories")
     finally:
         db.close()
-
 
 @app.get("/")
 def root():
