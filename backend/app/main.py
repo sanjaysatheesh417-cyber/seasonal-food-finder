@@ -64,7 +64,7 @@ async def seed_in_background():
     db = SessionLocal()
     try:
         count = db.query(Category).count()
-        if True:  # Force reseed
+        if count == 0:  # Force reseed
             logger.info("Seeding database in background...")
             from app.data.seed import seed_all
             seed_all(db)
