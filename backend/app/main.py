@@ -10,6 +10,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from app.database.db import engine, create_tables
 from app.routes.foods import router
+from app.models.models import Base
+from app.models.models import Base
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -48,8 +50,10 @@ async def startup():
         logger.error("Could not connect to MySQL")
         return
 
+    Base.metadata.drop_all(bind=engine)
+    logger.info("Tables dropped!")
     create_tables()
-    logger.info("Tables created!")
+    logger.info("Tables recreated!")
 
     # Seed in background so server starts immediately
     asyncio.create_task(seed_in_background())
