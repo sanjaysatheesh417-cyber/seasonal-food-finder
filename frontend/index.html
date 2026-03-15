@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>பருவ உணவு கண்டுபிடிப்பான் | Seasonal Food Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;600;700;900&family=Noto+Serif+Tamil:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header-bg"></div>
+    <div class="container">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-icon">🌿</span>
+          <div class="logo-text">
+            <h1>பருவ உணவு கண்டுபிடிப்பான்</h1>
+            <p>Seasonal Food Finder · Tamil Nadu</p>
+          </div>
+        </div>
+        <nav class="header-nav">
+          <a href="#" onclick="showSection('home')" class="nav-link active" data-section="home">முகப்பு</a>
+          <a href="#" onclick="showSection('browse')" class="nav-link" data-section="browse">உணவுகள்</a>
+          <a href="#" onclick="showSection('month')" class="nav-link" data-section="month">மாதம்</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO SECTION
+  ════════════════════════════════════════════════ -->
+  <section id="section-home" class="section active">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">🌾 தமிழ்நாடு · பருவகால உணவுகள்</div>
+        <h2 class="hero-title">தமிழ்நாட்டின் <span class="highlight">பருவகால</span> உணவுகளை கண்டறியுங்கள்</h2>
+        <p class="hero-subtitle">150+ பாரம்பரிய தமிழ் உணவுகள் · ஊட்டச்சத்து தகவல்கள் · சமையல் குறிப்புகள்</p>
+
+        <!-- Tamil Search Bar -->
+        <div class="search-wrapper">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              id="heroSearch"
+              placeholder="தமிழ் உணவை தேடுங்கள்... (மாம்பழம், கம்பு, முருங்கை)"
+              oninput="liveSearch(this.value)"
+              autocomplete="off"
+            />
+            <button class="search-btn" onclick="performSearch()">தேடு</button>
+          </div>
+          <div id="searchResults" class="search-dropdown hidden"></div>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num" id="statFoods">160+</span><span class="stat-label">உணவுகள்</span></div>
+          <div class="stat"><span class="stat-num">7</span><span class="stat-label">வகைகள்</span></div>
+          <div class="stat"><span class="stat-num">12</span><span class="stat-label">மாதங்கள்</span></div>
+          <div class="stat"><span class="stat-num">100%</span><span class="stat-label">தமிழ்</span></div>
+        </div>
+      </div>
+      <div class="hero-illustration">
+        <div class="food-orbit">
+          <div class="orbit-item" style="--i:0">🥭</div>
+          <div class="orbit-item" style="--i:1">🌾</div>
+          <div class="orbit-item" style="--i:2">🥦</div>
+          <div class="orbit-item" style="--i:3">🫘</div>
+          <div class="orbit-item" style="--i:4">🌿</div>
+          <div class="orbit-item" style="--i:5">🍛</div>
+        </div>
+        <div class="hero-center-icon">🌾</div>
+      </div>
+    </div>
+
+    <!-- Category Cards -->
+    <div class="container">
+      <h3 class="section-title">உணவு வகைகள் <span class="section-title-sub">Food Categories</span></h3>
+      <div class="categories-grid" id="categoriesGrid">
+        <!-- Loaded dynamically -->
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+
+      <!-- Month Selector -->
+      <h3 class="section-title" style="margin-top:3rem">இந்த மாதம் கிடைக்கும் உணவுகள் <span class="section-title-sub">Foods of the Month</span></h3>
+      <div class="month-selector" id="monthSelector">
+        <!-- Loaded dynamically -->
+      </div>
+
+      <!-- Featured Foods -->
+      <div id="featuredFoods" class="foods-grid">
+        <!-- Loaded dynamically -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       BROWSE / ALL FOODS SECTION
+  ════════════════════════════════════════════════ -->
+  <section id="section-browse" class="section hidden">
+    <div class="container">
+      <div class="browse-header">
+        <h2 class="page-title">அனைத்து உணவுகளும் <span class="page-title-sub">All Foods</span></h2>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-search">
+            <input type="text" id="browseSearch" placeholder="தமிழ் / English..." oninput="filterFoods()" />
+          </div>
+          <div class="filter-cats" id="filterCats">
+            <button class="filter-btn active" onclick="filterByCategory(null, this)">அனைத்தும்</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="browseGrid" class="foods-grid">
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+          <p>உணவுகள் ஏற்றப்படுகின்றன...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       MONTH SECTION
+  ════════════════════════════════════════════════ -->
+  <section id="section-month" class="section hidden">
+    <div class="container">
+      <h2 class="page-title">மாத உணவுகள் <span class="page-title-sub">Monthly Foods</span></h2>
+      <div class="month-grid" id="monthGrid">
+        <!-- Built dynamically -->
+      </div>
+      <div id="monthFoodsResult" class="foods-grid" style="margin-top:2rem"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOD DETAIL MODAL
+  ════════════════════════════════════════════════ -->
+  <div id="foodModal" class="modal hidden">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-container">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modalContent" class="modal-content">
+        <!-- Dynamic -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       RECIPE POPUP
+  ════════════════════════════════════════════════ -->
+  <div id="recipeModal" class="modal hidden">
+    <div class="modal-backdrop" onclick="closeRecipeModal()"></div>
+    <div class="modal-container modal-sm">
+      <button class="modal-close" onclick="closeRecipeModal()">✕</button>
+      <div id="recipeContent" class="modal-content">
+        <!-- Dynamic -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       TOAST
+  ════════════════════════════════════════════════ -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>🌾 பருவ உணவு கண்டுபிடிப்பான் · தமிழ்நாட்டின் பாரம்பரிய உணவு கலை · FastAPI + MySQL</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,533 @@
+/* ═══════════════════════════════════════════════════════════
+   பருவ உணவு கண்டுபிடிப்பான் - Main Stylesheet
+   Vibrant South Indian / Tamil Aesthetic
+═══════════════════════════════════════════════════════════ */
+
+:root {
+  --saffron: #FF6B2B;
+  --turmeric: #F5A623;
+  --leaf: #2D8B4F;
+  --leaf-light: #4CAF72;
+  --tamarind: #8B1A1A;
+  --cardamom: #2C5F2E;
+  --jasmine: #FFF8E7;
+  --sky: #E8F4F8;
+  --dark: #1A1A2E;
+  --dark-card: #16213E;
+  --text: #2C3E50;
+  --text-light: #6B7A8D;
+  --white: #FFFFFF;
+  --border: rgba(0,0,0,0.08);
+  --shadow: 0 4px 24px rgba(0,0,0,0.10);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.15);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans Tamil', 'Segoe UI', sans-serif;
+  background: var(--jasmine);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; border: none; outline: none; }
+input { font-family: inherit; outline: none; border: none; }
+img { max-width: 100%; }
+.hidden { display: none !important; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+.section { min-height: 100vh; padding-bottom: 4rem; }
+.section.active { display: block; }
+
+/* ─── Header ─────────────────────────────────────────────── */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  border-bottom: 3px solid var(--saffron);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 0;
+}
+.logo { display: flex; align-items: center; gap: 0.75rem; }
+.logo-icon { font-size: 2rem; }
+.logo-text h1 { font-family: 'Noto Serif Tamil', serif; font-size: 1.25rem; color: var(--saffron); font-weight: 700; }
+.logo-text p { font-size: 0.7rem; color: var(--text-light); }
+.header-nav { display: flex; gap: 0.5rem; }
+.nav-link {
+  padding: 0.5rem 1.25rem; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 600; color: var(--text-light);
+  transition: var(--transition);
+}
+.nav-link:hover, .nav-link.active {
+  background: var(--saffron); color: white;
+}
+
+/* ─── Hero ───────────────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+  padding: 5rem 1.5rem 4rem;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 3rem; overflow: hidden; position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FF6B2B' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-content { flex: 1; max-width: 600px; position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,107,43,0.2);
+  border: 1px solid var(--saffron);
+  color: var(--turmeric);
+  padding: 0.4rem 1rem; border-radius: 50px;
+  font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem;
+}
+.hero-title {
+  font-family: 'Noto Serif Tamil', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: white; line-height: 1.3; margin-bottom: 1rem;
+}
+.hero-title .highlight { color: var(--turmeric); }
+.hero-subtitle {
+  color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 2rem;
+}
+
+/* Search */
+.search-wrapper { position: relative; margin-bottom: 2rem; }
+.search-box {
+  display: flex; align-items: center;
+  background: white; border-radius: 50px;
+  padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+.search-icon { font-size: 1.1rem; margin-right: 0.75rem; }
+.search-box input {
+  flex: 1; background: none; font-size: 1rem;
+  color: var(--text); padding: 0.25rem 0;
+}
+.search-box input::placeholder { color: var(--text-light); }
+.search-btn {
+  background: var(--saffron); color: white;
+  padding: 0.6rem 1.5rem; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 600;
+  transition: var(--transition);
+}
+.search-btn:hover { background: var(--tamarind); }
+
+/* Search dropdown */
+.search-dropdown {
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+  background: white; border-radius: var(--radius); box-shadow: var(--shadow-lg);
+  max-height: 320px; overflow-y: auto; z-index: 200;
+  border: 1px solid var(--border);
+}
+.search-result-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.75rem 1rem; cursor: pointer;
+  transition: var(--transition); border-bottom: 1px solid var(--border);
+}
+.search-result-item:last-child { border-bottom: none; }
+.search-result-item:hover { background: var(--jasmine); }
+.search-result-img {
+  width: 48px; height: 48px; border-radius: 10px;
+  object-fit: cover; background: var(--jasmine);
+}
+.search-result-info { flex: 1; }
+.search-result-name { font-weight: 600; font-size: 0.95rem; }
+.search-result-eng { font-size: 0.75rem; color: var(--text-light); }
+.search-result-cat {
+  font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 50px;
+  background: var(--jasmine); color: var(--saffron);
+}
+.search-no-result { padding: 1.5rem; text-align: center; color: var(--text-light); }
+
+/* Hero Stats */
+.hero-stats { display: flex; gap: 2rem; }
+.stat { display: flex; flex-direction: column; align-items: center; }
+.stat-num { font-size: 1.75rem; font-weight: 900; color: var(--turmeric); }
+.stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+
+/* Orbiting animation */
+.hero-illustration {
+  flex-shrink: 0; width: 280px; height: 280px;
+  position: relative; display: flex; align-items: center; justify-content: center;
+}
+.hero-center-icon {
+  font-size: 4rem; z-index: 2;
+  filter: drop-shadow(0 0 20px rgba(245,166,35,0.6));
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+.food-orbit {
+  position: absolute; inset: 0;
+  animation: rotate 12s linear infinite;
+}
+.orbit-item {
+  position: absolute; font-size: 2rem;
+  width: 50px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
+  left: 50%; top: 50%;
+  transform: translateX(-50%) translateY(-50%)
+             rotate(calc(var(--i) * 60deg)) translateX(120px)
+             rotate(calc(var(--i) * -60deg));
+  animation: counter-rotate 12s linear infinite;
+}
+@keyframes rotate { to { transform: rotate(360deg); } }
+@keyframes counter-rotate { to { transform: translateX(-50%) translateY(-50%) rotate(calc(var(--i) * 60deg - 360deg)) translateX(120px) rotate(calc(360deg - var(--i) * -60deg)); } }
+
+/* ─── Section Titles ─────────────────────────────────────── */
+.section-title {
+  font-family: 'Noto Serif Tamil', serif;
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--dark); margin: 3rem 0 1.5rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-title-sub, .page-title-sub {
+  font-size: 0.85rem; color: var(--text-light);
+  font-family: 'Noto Sans Tamil', sans-serif;
+  font-weight: 400;
+}
+.page-title {
+  font-family: 'Noto Serif Tamil', serif;
+  font-size: 2rem; font-weight: 700;
+  color: var(--dark); padding: 2rem 0 1rem;
+}
+
+/* ─── Category Cards ─────────────────────────────────────── */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+}
+.category-card {
+  background: white; border-radius: var(--radius);
+  padding: 1.5rem 1rem; text-align: center;
+  cursor: pointer; transition: var(--transition);
+  box-shadow: var(--shadow); border: 2px solid transparent;
+  position: relative; overflow: hidden;
+}
+.category-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 4px;
+  background: var(--cat-color);
+}
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--cat-color);
+}
+.category-icon { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
+.category-name { font-weight: 700; font-size: 0.95rem; color: var(--dark); }
+.category-eng { font-size: 0.7rem; color: var(--text-light); margin-top: 0.25rem; }
+.category-count { font-size: 0.75rem; color: var(--saffron); font-weight: 600; margin-top: 0.5rem; }
+
+/* ─── Month Selector ─────────────────────────────────────── */
+.month-selector {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.month-btn {
+  padding: 0.5rem 1rem; border-radius: 50px;
+  background: white; border: 2px solid var(--border);
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--text-light); transition: var(--transition);
+  cursor: pointer;
+}
+.month-btn:hover, .month-btn.active {
+  background: var(--saffron); color: white; border-color: var(--saffron);
+}
+.month-btn.current { border-color: var(--leaf); }
+
+/* ─── Food Cards ─────────────────────────────────────────── */
+.foods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+.food-card {
+  background: white; border-radius: var(--radius);
+  overflow: hidden; cursor: pointer;
+  transition: var(--transition); box-shadow: var(--shadow);
+  display: flex; flex-direction: column;
+}
+.food-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+.food-card-img {
+  width: 100%; height: 180px;
+  object-fit: cover; background: var(--jasmine);
+  display: block; transition: transform 0.4s ease;
+}
+.food-card:hover .food-card-img { transform: scale(1.05); }
+.food-card-img-wrap { overflow: hidden; }
+.food-card-body { padding: 1rem; flex: 1; display: flex; flex-direction: column; }
+.food-card-category {
+  display: inline-block; padding: 0.2rem 0.6rem;
+  border-radius: 50px; font-size: 0.7rem; font-weight: 600;
+  background: var(--jasmine); color: var(--saffron);
+  margin-bottom: 0.5rem;
+}
+.food-card-name { font-family: 'Noto Serif Tamil', serif; font-size: 1.1rem; font-weight: 700; color: var(--dark); }
+.food-card-eng { font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.5rem; }
+.food-card-desc {
+  font-size: 0.82rem; color: var(--text-light);
+  line-height: 1.5; flex: 1;
+  display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+.food-card-seasons {
+  display: flex; gap: 0.25rem; flex-wrap: wrap; margin-top: 0.75rem;
+}
+.season-tag {
+  font-size: 0.65rem; padding: 0.15rem 0.5rem;
+  border-radius: 50px; background: #E8F5E9; color: var(--leaf);
+  font-weight: 600;
+}
+
+/* ─── Filter Bar ─────────────────────────────────────────── */
+.browse-header { padding: 2rem 0 1.5rem; }
+.filter-bar {
+  display: flex; flex-direction: column; gap: 1rem;
+}
+.filter-search input {
+  width: 100%; max-width: 400px;
+  padding: 0.75rem 1.25rem; border-radius: 50px;
+  border: 2px solid var(--border); background: white;
+  font-size: 0.95rem; transition: var(--transition);
+}
+.filter-search input:focus { border-color: var(--saffron); }
+.filter-cats { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.filter-btn {
+  padding: 0.45rem 1rem; border-radius: 50px;
+  background: white; border: 2px solid var(--border);
+  font-size: 0.8rem; font-weight: 600; color: var(--text-light);
+  transition: var(--transition); cursor: pointer;
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--saffron); color: white; border-color: var(--saffron);
+}
+
+/* ─── Month Grid ─────────────────────────────────────────── */
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+}
+.month-card {
+  background: white; border-radius: var(--radius);
+  padding: 1.5rem 1rem; text-align: center;
+  cursor: pointer; transition: var(--transition);
+  box-shadow: var(--shadow); border: 2px solid transparent;
+}
+.month-card:hover, .month-card.active {
+  border-color: var(--saffron); background: var(--saffron); color: white;
+  transform: translateY(-4px);
+}
+.month-card.active .month-num { color: white; }
+.month-num { font-size: 2rem; font-weight: 900; color: var(--saffron); }
+.month-tamil { font-size: 1rem; font-weight: 700; }
+.month-eng { font-size: 0.7rem; color: var(--text-light); }
+.month-card.active .month-eng { color: rgba(255,255,255,0.8); }
+
+/* ─── Food Detail Modal ──────────────────────────────────── */
+.modal {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+}
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+}
+.modal-container {
+  position: relative; z-index: 1;
+  background: white; border-radius: 24px;
+  max-width: 820px; width: 100%;
+  max-height: 90vh; overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+  animation: modalIn 0.3s ease;
+}
+.modal-sm { max-width: 540px; }
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to { opacity: 1; transform: none; }
+}
+.modal-close {
+  position: sticky; top: 1rem; float: right;
+  margin: 1rem 1rem 0 0;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(0,0,0,0.1); color: var(--text);
+  font-size: 1rem; font-weight: 700; z-index: 10;
+  transition: var(--transition);
+}
+.modal-close:hover { background: var(--saffron); color: white; }
+
+/* Modal Content */
+.food-detail-img {
+  width: 100%; height: 280px; object-fit: cover;
+  border-radius: 24px 24px 0 0;
+}
+.food-detail-body { padding: 1.5rem 2rem 2rem; }
+.food-detail-title {
+  font-family: 'Noto Serif Tamil', serif;
+  font-size: 2rem; font-weight: 900; color: var(--dark);
+  margin-bottom: 0.25rem;
+}
+.food-detail-eng { font-size: 1.1rem; color: var(--text-light); margin-bottom: 1rem; }
+.food-detail-desc { font-size: 0.95rem; color: var(--text); line-height: 1.7; margin-bottom: 1.5rem; }
+
+.detail-seasons { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.detail-season-tag {
+  padding: 0.3rem 0.75rem; border-radius: 50px;
+  background: #E8F5E9; color: var(--leaf);
+  font-size: 0.8rem; font-weight: 600;
+}
+
+/* Nutrition Card */
+.nutrition-card {
+  background: linear-gradient(135deg, var(--dark) 0%, #16213E 100%);
+  border-radius: var(--radius); padding: 1.5rem;
+  margin-bottom: 1.5rem; color: white;
+}
+.nutrition-title { font-weight: 700; font-size: 1rem; color: var(--turmeric); margin-bottom: 1rem; }
+.nutrition-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 1rem;
+}
+.nut-item { text-align: center; }
+.nut-value { font-size: 1.4rem; font-weight: 900; color: var(--turmeric); }
+.nut-unit { font-size: 0.65rem; color: rgba(255,255,255,0.5); }
+.nut-label { font-size: 0.75rem; color: rgba(255,255,255,0.7); margin-top: 0.2rem; }
+
+/* Benefits */
+.benefits-section { margin-bottom: 1.5rem; }
+.benefits-title { font-weight: 700; font-size: 1rem; color: var(--dark); margin-bottom: 0.75rem; }
+.benefit-item {
+  display: flex; align-items: flex-start; gap: 0.5rem;
+  padding: 0.5rem 0; border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.benefit-item::before { content: '✅'; flex-shrink: 0; }
+
+/* Recipes */
+.recipes-section { margin-bottom: 1rem; }
+.recipes-title { font-weight: 700; font-size: 1rem; color: var(--dark); margin-bottom: 0.75rem; }
+.recipe-tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.recipe-tab {
+  padding: 0.5rem 1.25rem; border-radius: 50px;
+  background: var(--jasmine); border: 2px solid var(--border);
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  transition: var(--transition);
+}
+.recipe-tab.active { background: var(--saffron); color: white; border-color: var(--saffron); }
+.recipe-panel { display: none; }
+.recipe-panel.active { display: block; }
+.recipe-panel h4 {
+  font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.75rem;
+}
+.recipe-meta { display: flex; gap: 1rem; margin-bottom: 1rem; }
+.recipe-meta-item {
+  font-size: 0.8rem; color: var(--text-light);
+  display: flex; align-items: center; gap: 0.25rem;
+}
+.recipe-section-label {
+  font-weight: 700; font-size: 0.85rem; color: var(--saffron); margin-bottom: 0.5rem;
+}
+.recipe-ing, .recipe-steps {
+  font-size: 0.9rem; color: var(--text); line-height: 1.8;
+  background: var(--jasmine); border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem; margin-bottom: 1rem;
+  white-space: pre-line;
+}
+
+/* ─── Loading States ─────────────────────────────────────── */
+.skeleton-card {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius); height: 140px;
+}
+@keyframes shimmer { to { background-position: -200% 0; } }
+.loading-spinner {
+  grid-column: 1 / -1; display: flex; flex-direction: column;
+  align-items: center; gap: 1rem; padding: 3rem;
+}
+.spinner {
+  width: 40px; height: 40px; border: 4px solid var(--border);
+  border-top-color: var(--saffron); border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ─── Toast ──────────────────────────────────────────────── */
+.toast {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 2000;
+  background: var(--dark); color: white;
+  padding: 0.75rem 1.5rem; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 600;
+  box-shadow: var(--shadow-lg);
+  animation: toastIn 0.3s ease;
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ─── Footer ─────────────────────────────────────────────── */
+.site-footer {
+  background: var(--dark); color: rgba(255,255,255,0.5);
+  text-align: center; padding: 1.5rem;
+  font-size: 0.85rem;
+}
+
+/* ─── Empty State ────────────────────────────────────────── */
+.empty-state {
+  grid-column: 1 / -1; text-align: center;
+  padding: 4rem 2rem; color: var(--text-light);
+}
+.empty-state-icon { font-size: 3rem; margin-bottom: 1rem; }
+.empty-state-text { font-size: 1.1rem; }
+
+/* ─── Vitamins/Minerals display ──────────────────────────── */
+.vit-min-row { display: flex; gap: 1rem; flex-wrap: wrap; margin: 0.5rem 0 1.5rem; }
+.vit-pill {
+  font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 50px;
+  background: #FFF3CD; color: #856404; font-weight: 600;
+}
+.min-pill {
+  font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 50px;
+  background: #D1ECF1; color: #0C5460; font-weight: 600;
+}
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero { flex-direction: column; padding: 3rem 1.5rem; text-align: center; }
+  .hero-illustration { display: none; }
+  .hero-stats { justify-content: center; }
+  .foods-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .header-nav .nav-link { padding: 0.4rem 0.75rem; font-size: 0.8rem; }
+  .food-detail-body { padding: 1rem 1.25rem 1.5rem; }
+  .modal-container { border-radius: 20px; }
+  .food-detail-img { height: 200px; }
+}
+
+@media (max-width: 480px) {
+  .logo-text h1 { font-size: 1rem; }
+  .hero-title { font-size: 1.5rem; }
+  .foods-grid { grid-template-columns: 1fr 1fr; }
+  .nutrition-grid { grid-template-columns: repeat(3, 1fr); }
+}
