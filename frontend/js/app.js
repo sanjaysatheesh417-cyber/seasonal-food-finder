@@ -6,7 +6,7 @@
 // ─── Config ───────────────────────────────────────────────────
 const API = window.location.hostname === "localhost"
   ? "http://localhost:8000/api"
-  : "/api";
+  : "https://seasonal-food-finder.onrender.com/api";
 
 // ─── State ────────────────────────────────────────────────────
 let allFoods = [];
