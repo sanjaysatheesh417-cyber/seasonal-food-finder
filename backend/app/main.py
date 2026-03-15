@@ -55,7 +55,7 @@ async def startup():
     db = SessionLocal()
     try:
         count = db.query(Category).count()
-        if count == 0:
+        if True:
             logger.info("Seeding database...")
             from app.data.seed import seed_all
             seed_all(db)
