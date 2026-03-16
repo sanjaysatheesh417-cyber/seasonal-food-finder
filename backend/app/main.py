@@ -70,6 +70,8 @@ async def startup():
         logger.error("Could not connect to MySQL")
         return
 
+    Base.metadata.drop_all(bind=engine)
+    logger.info("Tables dropped!")
     create_tables()
     logger.info("Tables recreated!")
 
