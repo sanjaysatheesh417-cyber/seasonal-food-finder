@@ -8,6 +8,16 @@ const API = window.location.hostname === "localhost"
   ? "http://localhost:8000/api"
   : "https://seasonal-food-finder.onrender.com/api";
 
+const CATEGORY_ICONS = {
+  "Fruits": "🍎",
+  "Vegetables": "🥦",
+  "Millets": "🌾",
+  "Grains": "🌾",
+  "Pulses": "🫘",
+  "Traditional Tamil Foods": "🍛",
+  "Greens (Keerai)": "🌿"
+};
+
 // ─── State ────────────────────────────────────────────────────
 let allFoods = [];
 let allCategories = [];
@@ -69,7 +79,7 @@ function renderCategoryCards() {
     <div class="category-card"
          style="--cat-color: ${cat.color}"
          onclick="filterAndBrowse(${cat.id})">
-      <span class="category-icon">${cat.icon}</span>
+      <span class="category-icon">${CATEGORY_ICONS[cat.name_english] || '🍽️'}</span>
       <div class="category-name">${cat.name_tamil}</div>
       <div class="category-eng">${cat.name_english}</div>
     </div>
@@ -167,7 +177,7 @@ function buildFilterCats() {
       class="filter-btn"
       data-cat-id="${cat.id}"
       onclick="filterByCategory(${cat.id}, this)">
-      ${cat.icon} ${cat.name_tamil}
+      ${CATEGORY_ICONS[cat.name_english] || '🍽️'} ${cat.name_tamil}
     </button>
   `).join("");
   container.innerHTML = `
