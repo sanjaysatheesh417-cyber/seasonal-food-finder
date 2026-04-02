@@ -14,4 +14,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD sh -c "export PYTHONPATH=$PYTHONPATH:. && python app/data/seed.py && gunicorn app.main:app"
+CMD sh -c "export PYTHONPATH=$PYTHONPATH:. && python app/data/seed.py && python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT"
