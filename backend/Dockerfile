@@ -14,4 +14,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD sh -c "python seed.py && gunicorn main:app"
+CMD sh -c "python backend/app/data/seed.py && gunicorn backend.app.main:app"
